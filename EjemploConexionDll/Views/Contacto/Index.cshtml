@@ -1,0 +1,69 @@
+﻿@model IEnumerable<EjemploConexionDll.Models.Dto.ContactosDto>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TipoContacto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Telfijo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Telmovil)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FechaNac)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sexo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EstadoCivil)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TipoContacto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Telfijo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Telmovil)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FechaNac)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sexo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EstadoCivil)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>
