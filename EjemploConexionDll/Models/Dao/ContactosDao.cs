@@ -60,8 +60,9 @@ namespace EjemploConexionDll.Models.Dao
         public void UpdateContactos(ContactosDto contacto)
         {
             Conectar();
-            SqlCommand com = new SqlCommand("SpUpdateContactos", a);
+            SqlCommand com = new SqlCommand("SpUpdateContactosAlma", a);
             com.CommandType = CommandType.StoredProcedure;
+            com.Parameters.AddWithValue("@Id", contacto.Id);
             com.Parameters.AddWithValue("@Nombre", contacto.Nombre);
             com.Parameters.AddWithValue("@TipoContacto", contacto.TipoContacto);
             com.Parameters.AddWithValue("@TelFijo", contacto.Telfijo);
@@ -87,7 +88,7 @@ namespace EjemploConexionDll.Models.Dao
                 contacto.TipoContacto = rdr["TipoContacto"].ToString();
                 contacto.Telfijo = rdr["TelFijo"].ToString();
                 contacto.Telmovil = rdr["TelMovil"].ToString();
-                contacto.FechaNac = DateTime.Parse(rdr["FechaNacimiento"].ToString());
+                contacto.FechaNac = Convert.ToDateTime(rdr["fechaNacimiento"].ToString());
                 contacto.Sexo = rdr["Sexo"].ToString();
                 contacto.EstadoCivil = rdr["EstadoCivil"].ToString();
             }

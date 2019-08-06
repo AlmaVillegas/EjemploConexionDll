@@ -1,34 +1,40 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
 
 namespace EjemploConexionDll.Models.Dto
 {
     public class ContactosDto
     {
         public int Id { get; set; }
+
         [Required]
         [Display(Name ="Nombre")]
-        [RegularExpression("^[a-zA-Z]+$", ErrorMessage ="Solo letras")]
+        [RegularExpression("^[a-zñ]+[a-zñ ]+[a-zñ]$", ErrorMessage ="Solo letras")]
         public string Nombre { get; set; }
 
+        [Required]
         public string TipoContacto { get; set; }
+
         [Required]
         [Display(Name ="Telfijo")]
         [RegularExpression("^[0-9]*$", ErrorMessage ="Solo Números")]
+        [Range(0, 10, ErrorMessage = "10 Digitos")]
         public string Telfijo { get; set; }
+
         [Required]
         [Display(Name = "Telmovil")]
         [RegularExpression("^[0-9]*$", ErrorMessage = "Solo Números")]
+        [Range(0, 10, ErrorMessage = "10 Digitos")]
         public string Telmovil { get; set; }
 
+        [Required]
         [DataType(DataType.Date)]
+        [DisplayFormat(ApplyFormatInEditMode =true, DataFormatString = "{0:yyyy-MM-dd}")]
         public DateTime FechaNac { get; set; }
 
+        [Required]
         public string Sexo { get; set; }
-
+        [Required]
         public string EstadoCivil { get; set; }
     }
 
@@ -48,7 +54,7 @@ namespace EjemploConexionDll.Models.Dto
     {
         Soltero,
         Casado,
-        Divorsiado,
+        Divorciado,
         Viudo,
         Unionlibre 
     }

@@ -41,7 +41,7 @@ namespace EjemploConexionDll.Controllers
             {
                 return View("Index");
             }
-            ContactosDto contacto = ObjetoContacto.GetAllContactos(id);
+            ContactosDto contacto = ObjetoContacto.GetContactoData(id);
             if(contacto== null)
             {
                 return View("Index");
@@ -58,7 +58,7 @@ namespace EjemploConexionDll.Controllers
             }
             if (ModelState.IsValid)
             {
-                ObjetoContacto.UpdateContactos(contacto)];
+                ObjetoContacto.UpdateContactos(contacto);
                 return RedirectToAction("Index");
             }
             return View("Index");
